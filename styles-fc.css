@@ -1,0 +1,472 @@
+/* Font Family 1 */
+@font-face {
+  font-family: 'Iosevka';
+  src: url('../dist/iosevka.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  src: url('../dist/iosevka-italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* Font Family 2 */
+@font-face {
+  font-family: 'Latin Modern Mono';
+  src: url('../dist/lmmono.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Latin Modern Mono';
+  src: url('../dist/lmmono-italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+.inputGroup {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.container {
+    /* overrides for bootstrap */
+    font-family: Latin Modern Mono, Courier New, Courier, monospace;
+    padding-top: 1rem;
+}
+
+.header {
+    /* header */
+  font-family: Iosevka, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2rem;
+}
+
+html {
+    /* root values */
+    font-size: 12pt;
+}
+
+
+.block {
+    /* text block */
+    font-family: Latin Modern Mono;
+    font-size: 1rem;
+}
+
+nav {
+    /* navbar */
+    background-color: #FFF;
+    padding-top: 20px; 
+    /* text-align: center; */
+}
+
+.padded {
+    /* playing around with the buttons
+     * */
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    /* letter-spacing: 4px; */
+    font-size: 1rem; 
+}
+
+/* CSS */
+.button-50 {
+    /* a style for objects that aren't buttons that mimics button-50 */
+  appearance: button;
+  background-color: #08F;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 5px 1px;
+  /* box-sizing: border-box; */
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Iosevka, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin: 0 0.5rem 1rem 0;
+  overflow: visible;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-50-grabber {
+  appearance: button;
+  background-color: lightsalmon;
+  background-image: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 5px 1px;
+  /* box-sizing: border-box; */
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Iosevka, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  /* line-height: 2rem; */
+  margin: 0 0.5rem 3rem 0;
+  overflow: visible;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  text-transform: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.acbutton:not(.collapsed) {
+    /* overriding bootstrap */
+    background: lightslategray;
+    color: aliceblue;
+    transform: scale(1.01) translateY(-2px);
+}
+
+.acbutton:not(.collapsed)::after {
+    /* overriding bootstrap */
+    background-image: none;
+    transform: rotate(-90deg);
+}
+
+.acbutton:focus {
+    box-shadow: 0 0 0 1px dimgray;
+}
+
+.button-50:focus {
+  text-decoration: none;
+}
+
+.button-50:hover {
+    font-style: italic;
+}
+
+.button-50:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+.button-50:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(1px, 1px);
+}
+
+.buttonText {
+    /* smaller version */
+    color: black;
+    border: 1px solid #000;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: lightgray;
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    overflow: visible;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.buttonText:hover {
+    color: white;
+    background-color: #F00;
+    text-decoration: bold; 
+}
+
+.textFieldInputAndButton {
+    /* for span containing text field and field delete button */
+    display: flex;
+    width: inherit;
+}
+
+.textFieldLabel {
+    /* smaller version */
+    color: black;
+    border: 1px solid #000;
+    border-bottom: none;
+    background-color: lightpink;
+    display: inline-block;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    overflow: visible;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-top-left-radius:     5px;
+    border-top-right-radius:    5px;
+    border-bottom-left-radius:  0px;
+    border-bottom-right-radius: 0px;
+}
+
+.goButton {
+    border-left: none;
+}
+
+.goButton:hover {
+    background-color: limegreen;
+}
+
+.buttonText:active {
+    transform: scale(1.1);
+    border-left: 1px solid black;
+}
+
+
+.labelText {
+    /* smaller version */
+    color: black;
+    border: 1px solid #000;
+    border-right: none;
+    border-top-right-radius:    0px;
+    border-top-left-radius:     5px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius:  5px;
+    background-color: lightpink;
+    display: inline-block;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    overflow: visible;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.selectorLabel {
+    /* smaller version */
+    color: black;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: lightskyblue;
+    display: inline-block;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    overflow: visible;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.singleSelect {
+    flex: 1 1 auto;
+    border-left: 1px solid black;
+    border-right: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: inherit;
+}
+
+.noBorder {
+    flex: 1 1 auto;
+    border-left: 1px solid black;
+    border-right: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 0px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: -webkit-fill-available;
+}
+
+.noBorder:focus {
+    outline: none;
+}
+.marginCorrect {
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+select:focus {
+    outline: none;
+}
+
+select {
+    border: 1px solid black;
+    border-right: none;
+    border-radius: 0px;
+}
+
+.fieldAdderSelect {
+    border-right: 1px solid black;
+}
+
+.xbutton {
+    /* smaller version */
+    color: #08F;
+    cursor: pointer;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.xbutton:hover {
+    color: #0F0;
+}
+
+.xbutton:active {
+  transform: translate(2px, 2px);
+}
+
+.cardList {
+    /* putting a border at the top of text on the cards */
+    border-top: 1px dashed rgba(0,0,0,.125);
+}
+
+.cardText {
+    /* text on film cards */
+    text-align: left;
+    font-size: 10pt;
+    min-width: 200px;
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: lightgoldenrodyellow;
+    border: 1px dashed rgba(0,0,0,.125);
+    border-top: 1px dashed rgba(0,0,0,.125);
+    font-style: italic;
+}
+
+.cardDataTitle {
+    /* for titles on data items in cards */
+    font-style: normal; 
+    text-decoration: underline;
+}
+
+.normal {
+    /* for titles on data items in cards */
+    font-style: normal; 
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .container {
+	max-width: 100%;
+    }
+
+    .cardList {
+	border-top: 1px dashed rgba(0,0,0,0.5);
+    }
+
+    .cardText {
+	font-size: medium;
+	border: 1px dashed rgba(0,0,0,0.5);
+	padding: 5px;
+	min-width: unset;
+    }
+
+    .btn-primary {
+	margin-top: 3px;
+	font-size: x-large;
+    }
+    
+    h5 {
+	font-size: x-large;
+    }
+
+    .acbutton {
+	font-size: 2rem;
+    }
+
+    .button-50-grabber {
+	font-size: 2rem;
+    }
+
+    .buttonText {
+	/* smaller version */
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	line-height: unset;
+	font-size: medium;
+    }
+
+    .labelText {
+	/* smaller version */
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	line-height: unset;
+	font-size: medium;
+    }
+
+    .textFieldLabel {
+	/* smaller version */
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	line-height: unset;
+	font-size: medium;
+    }
+
+    .selectorLabel {
+	/* smaller version */
+	font-size: medium;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	line-height: unset;
+    }
+
+    .goButton {
+	/* smaller version */
+	font-size: medium;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	line-height: unset;
+    }
+
+    .noBorder {
+	flex: 1 1 auto;
+	font-size: medium;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	width: inherit;
+    }
+}
+
