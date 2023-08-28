@@ -10,10 +10,7 @@ import FilmData from './FilmData'
 import TextInputField from './TextInputField'
 import FieldAdder from './FieldAdder'
 
-export type FormState = { count: number, availableFieldtypes: string[], genrecount: number, fields: {id: number, fieldtype: string, value: string}[] }
-
-
-export default function FilmGrabber() {
+export default function MyList({ myListStateJSON, setMyListState }: { myListStateJSON: string, setMyListState: React.Dispatch<React.SetStateAction<string>> }) {
 
     // state <= 08/11/23 16:08:18 // 
     const [formstate, setFormstate] = useState({count: 0, availableFieldtypes: fieldTypes, genrecount: 0, fields: [{id: 0, fieldtype: "", value: ""}]})

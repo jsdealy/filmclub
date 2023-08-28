@@ -1,10 +1,9 @@
-<?php
+<?php session_start();
 
-$code = isset($_POST['code']) ? $_POST['code'] : "unset";
-$access = isset($_COOKIE['soiw3489alk']) ? $access = $_COOKIE['soiw3489alk'] : "unset";
 $easyaccess = isset($_GET['alk83092948092']) ? $_GET['alk83092948092'] : "unset";
+$login = isset($_SESSION['login']) ? $_SESSION['login'] : false;
 
-if ($access === "98sjlkj8jjsaSsdf" || $code === "sl348daoi3w4Vlk2SKjs84792D" || $easyaccess === "882w398dkj") {
+if ($login || $easyaccess === "882w398dkj") {
 
 ?>
 <!DOCTYPE html>
@@ -35,6 +34,3 @@ if ($access === "98sjlkj8jjsaSsdf" || $code === "sl348daoi3w4Vlk2SKjs84792D" || 
 }
         
 else { echo "Access Denied"; }
-    
-?>
-

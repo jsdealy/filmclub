@@ -1,7 +1,7 @@
 <?php
 session_start();
-if ($_SESSION['loggedin'] === "good") {
-    header("Location: https://www.justindealy.org/filmclub/home.php");
+if ($_SESSION['login'] === true) {
+    header("Location: /../");
 } else {
 
 ?>
@@ -29,8 +29,6 @@ if ($_SESSION['loggedin'] === "good") {
     <script src='./dist/loginRegister.js'></script>
   </body>
 </html>
-    <?php
-}
-    
-?>
 
+<?php
+}

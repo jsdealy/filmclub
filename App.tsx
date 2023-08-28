@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles-fc.css'
 import FilmGrabber from './FilmGrabber'
+import MyList from './MyList'
 
 // 08/05/23 14:08:12 => the App function // 
 function App() {
+    const [myListState, setMyListState] = useState("")
     const buttonNames = [ "Film Grabber", "Club Data", "My Data", "My List" ]
+
 
     return (
 	<>
@@ -26,7 +29,8 @@ function App() {
 					</h2>
 					<div id={`collapse${i}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
 					    <div className="accordion-body">
-						{ i === 0 ? <FilmGrabber /> : "On the way!" }
+					{ name === "Film Grabber" ? <FilmGrabber /> : name === "My List" ? 
+					    <MyList myListStateJSON={myListState} setMyListState={setMyListState} /> : "On the way!" }
 					    </div>
 					</div>
 				    </div>

@@ -470,3 +470,7 @@ select {
     }
 }
 
+.alertText {
+    text-align: center;
+    text-transform: capitalize;
+}

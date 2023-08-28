@@ -30,7 +30,7 @@ export default class FilmData {
     genre:         string | undefined;
     rating:        string | undefined;
     numratings:    string | undefined;
-    language:    string | undefined;
+    language:      string | undefined;
     directors:     string | undefined;
     actors:        string | undefined;
     writers:       string | undefined;
