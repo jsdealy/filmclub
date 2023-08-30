@@ -19,6 +19,7 @@ export default class FilmData {
 	this.directors  = raw.at(8)
 	this.actors     = raw.at(9)
 	this.writers    = raw.at(10)
+	this.id    	= raw.at(11)
 	this.acclaim    = raw.at(12)
     }
 
@@ -34,5 +35,6 @@ export default class FilmData {
     directors:     string | undefined;
     actors:        string | undefined;
     writers:       string | undefined;
+    id:       string | undefined;
     acclaim:       string | undefined;
 }

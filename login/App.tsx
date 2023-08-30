@@ -25,6 +25,7 @@ function App() {
 	return str.search(/[A-Z]/) >= 0 && str.search(/[a-z]/) >= 0 && str.search(/[0-9]/) >= 0 && str.search(/[^\w\s]|_/) >= 0 && str.length >= 8
     }
 
+    // TODO: refactor this into a generic function to which we pass callbacks <= 08/28/23 18:49:44 // 
     async function submitLoginOrRegister() {
 	setDisplaystate({state: "text", text: "Loading..."}); 
 	let formData = new FormData()

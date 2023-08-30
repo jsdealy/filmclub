@@ -137,7 +137,7 @@ nav {
 
 .acbutton:not(.collapsed) {
     /* overriding bootstrap */
-    background: lightslategray;
+    background: indianred;
     color: aliceblue;
     transform: scale(1.01) translateY(-2px);
 }
@@ -376,10 +376,22 @@ select {
     font-style: italic;
 }
 
+.synopsis {
+    /* text on film cards */
+    line-height: 1.2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
 .cardDataTitle {
     /* for titles on data items in cards */
     font-style: normal; 
     text-decoration: underline;
+}
+
+.linkButton {
+    /* for the link buttons at the bottom of film cards*/
+    margin: 0.25rem;
 }
 
 .normal {

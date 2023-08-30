@@ -1,7 +1,5 @@
-<?php
-
-declare(strict_types=1);
-
+<?php declare(strict_types=1); session_start(); 
+require "classes/MyList.php";
 require "languages.php";
 
 function error($message, $type = E_USER_ERROR) {
@@ -142,7 +140,7 @@ function sqlQueryBuilder(array $data, int $resultSize = 20) {
 	    case "actors":    $ret = andInAString($ret, textField($x, $data[$i]['value'])); break;
 	    case "writers":   $ret = andInAString($ret, textField($x, $data[$i]['value'])); break;
 	    case "title":    $ret = andInAString($ret, textField($x, $data[$i]['value'])); break;
-	    default: printToConsole("hit default: " . $x . "\n"); break;
+	    default: error_log("hit default: " . $x . "\n"); break;
 	}
     }
 
@@ -170,7 +168,7 @@ function main($grabber) {
     try {
 	$mysql = new mysqli($_ENV['SQL_HOST'], $_ENV['SQL_USERNAME'], $_ENV['SQL_PASSWORD'], $_ENV['SQL_DB']);
     } catch (Exception $e) {
-	printToConsole("Error: " . $e->getMessage() . "\nMysqli error number: " . mysqli_connect_errno() . "\n");
+	error_log("Error: " . $e->getMessage() . "\nMysqli error number: " . mysqli_connect_errno() . "\n");
 	echo "error 827";
 	return;
     }
@@ -190,19 +188,15 @@ function main($grabber) {
 	    /* error("Failed to parse JSON.", E_USER_ERROR); */
     $query = sqlQueryBuilder($data);
 
-    /* printToConsole("query: " . $query . "\n"); */
-
     try {
 	$stmt = $mysql->prepare("SELECT * FROM movies WHERE " . $query);
+	$stmt->execute();
+	$retob = $stmt->get_result();
     } catch (Exception $e) {
-	printToConsole("Error: " . $e->getMessage() . "\nMysqli error number: " . mysqli_errno($mysql) . "\nMysqli error: " . mysqli_error($mysql) . "\n");
+	error_log("Error: " . $e->getMessage() . "\nMysqli error number: " . mysqli_errno($mysql) . "\nMysqli error: " . mysqli_error($mysql) . "\n");
 	echo "input error (missing dropdown field or bad text syntax)";
 	return;
     }
-
-    /* $stmt->bind_param("s", $username); */ 
-    $stmt->execute();
-    $retob = $stmt->get_result();
 
     if (count($rows = $retob->fetch_all())) {
 	$jsonRows = json_encode($rows);
@@ -215,10 +209,25 @@ function main($grabber) {
 
 }
 
+$login = isset($_SESSION['login']) ? $_SESSION['login'] : false;
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : "";
+
 $grabber = $_POST['grabber'];
+$mylistpost = isset($_POST['mylist']) ? $_POST['mylist'] : false;
+$action = isset($_POST['request']) ? json_decode($_POST['request'])->action : false;
+
 
 if (isset($grabber) && is_string($grabber) && strlen($grabber) < 5000 && isJSON($grabber)) {
     main($grabber);
-}
-
-?>
+} else if ($action) {
+    if ($action == "getcred") echo json_encode(['login' => $login, 'username' => $username]);
+    else if ($action == "getimage") {
+	$filmClubDB = new FilmClubDB;
+	$imdb_id = json_decode($_POST['request'])->content;
+	$filmClubDB->getimage($imdb_id);
+    } else if ($action == "getoverview") {
+	$filmClubDB = new FilmClubDB;
+	$imdb_id = json_decode($_POST['request'])->content;
+	$filmClubDB->getoverview($imdb_id);
+    } 
+} 

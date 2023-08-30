@@ -9,21 +9,23 @@ import { languages, genres, dropdowns, fieldTypes, doubleDropdowns } from './con
 import FilmData from './FilmData'
 import TextInputField from './TextInputField'
 import FieldAdder from './FieldAdder'
+import getcred from './getCred'
+import MyListHandle from './MyListHandle'
 
-export default function MyList({ myListStateJSON, setMyListState }: { myListStateJSON: string, setMyListState: React.Dispatch<React.SetStateAction<string>> }) {
+export default function MyList() {
 
     // state <= 08/11/23 16:08:18 // 
     const [formstate, setFormstate] = useState({count: 0, availableFieldtypes: fieldTypes, genrecount: 0, fields: [{id: 0, fieldtype: "", value: ""}]})
     const [displaystate, setDisplaystate] = useState({state: "init", filmdata: [[""]], text: ""})
 
 
-    // function for interacting with the api <= 08/16/23 17:49:57 // 
+    // TODO: replace this with a function that does the same thing in the client <= 08/28/23 11:29:14 // 
     async function submitForm() {
 	setDisplaystate({state: "text", filmdata: displaystate.filmdata, text: "Loading..."}); 
 	let formData = new FormData()
 
 	// calling sanitizeFieldsForAPI <= 08/13/23 12:57:00 // 
-	formData.append("grabber", JSON.stringify(sanitizeFieldsForAPI(formstate.fields)))
+	formData.append("mylist", JSON.stringify(wrapAction("get", sanitizeFieldsForAPI(formstate.fields))))
 
 	// calling fetch and storing the response <= 08/12/23 19:58:32 // 
 	let resPromise = await fetch("/filmclub/api.php", {method: "POST", body: formData}); 
@@ -42,6 +44,16 @@ export default function MyList({ myListStateJSON, setMyListState }: { myListStat
 	}
     }
 
+    type MyListRequest = {
+	action: string,
+	items: { fieldtype: string, value: string }[]
+    }
+
+    function wrapAction(action: string, fields: {fieldtype: string, value: string}[]): MyListRequest  {
+	return {action: action, items: fields}
+    }
+
+    // this will help ensure that the fields sent as json have the structure {fieldtype: blabla, value: blabla} <= 08/28/23 12:04:55 // 
     function sanitizeFieldsForAPI(fields: {id: number, fieldtype: string, value: string}[]) {
 	console.log(fields)
 	return fields
@@ -139,7 +151,7 @@ export default function MyList({ myListStateJSON, setMyListState }: { myListStat
 			// Submit button <= 08/14/23 18:58:02 // 
 			formstate.count > 0 && <button onClick={async () => {  
 			    submitForm()
-			    }} className="button-50-grabber">Grab Films</button> 
+			    }} className="button-50-grabber">Grab From My List</button> 
 		    } 
 
 		    {

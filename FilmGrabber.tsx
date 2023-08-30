@@ -146,6 +146,7 @@ export default function FilmGrabber() {
 		    } 
 
 		    {
+			// making the film cards if displaystate is display; if displaystate is text displaying an alert <= 08/28/23 16:05:07 // 
 			displaystate.state === "display" ? makeFilmCards(displaystate.filmdata) : 
 			    displaystate.state === "text" ? displaystate.text.search(/error/i) < 0 ? 
 				(displaystate.text.search(/^\s*$/) >= 0 ? <div className="alert alert-danger" role="alert">EMPTY RESPONSE</div> : 
